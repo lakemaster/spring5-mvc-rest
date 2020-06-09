@@ -33,6 +33,17 @@ public class Bootstrap implements CommandLineRunner{
         loadVendors();
     }
 
+    private void loadVendors() {
+        Vendor vendor1 = new Vendor();
+        vendor1.setName("Vendor 1");
+        vendorRepository.save(vendor1);
+
+        Vendor vendor2 = new Vendor();
+        vendor2.setName("Vendor 2");
+        vendorRepository.save(vendor2);
+
+    }
+
     private void loadCategories() {
         Category fruits = new Category();
         fruits.setName("Fruits");
@@ -75,21 +86,4 @@ public class Bootstrap implements CommandLineRunner{
 
         System.out.println("Customers Loaded: " + customerRepository.count());
     }
-
-
-    private void loadVendors() {
-        //given
-        Vendor vendor1 = new Vendor();
-        vendor1.setId(1L);
-        vendor1.setName("Indian Fruits Company");
-        vendorRepository.save(vendor1);
-
-        Vendor vendor2 = new Vendor();
-        vendor2.setId(2L);
-        vendor2.setName("Brasilian Fruits Company");
-        vendorRepository.save(vendor2);
-
-        System.out.println("Customers Loaded: " + customerRepository.count());
-    }
-
 }

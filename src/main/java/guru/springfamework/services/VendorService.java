@@ -1,15 +1,17 @@
 package guru.springfamework.services;
 
 import guru.springfamework.api.v1.model.VendorDTO;
-import org.springframework.stereotype.Service;
+import guru.springfamework.api.v1.model.VendorListDTO;
 
-import java.util.List;
 
-@Service
+/**
+ * Created by jt on 10/6/17.
+ */
 public interface VendorService {
-    List<VendorDTO> getAllVendors();
 
     VendorDTO getVendorById(Long id);
+
+    VendorListDTO getAllVendors();
 
     VendorDTO createNewVendor(VendorDTO vendorDTO);
 

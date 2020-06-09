@@ -2,31 +2,40 @@ package guru.springfamework.api.v1.mapper;
 
 import guru.springfamework.api.v1.model.VendorDTO;
 import guru.springfamework.domain.Vendor;
-import junit.framework.TestCase;
+import org.junit.Test;
 
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
-public class VendorMapperTest extends TestCase {
+public class VendorMapperTest {
 
-    private static final String NAME = "Name";
+    public static final String NAME = "someName";
 
-    public void testVendorToVendorDTO() {
+    VendorMapper vendorMapper = VendorMapper.INSTANCE;
+
+    @Test
+    public void vendorToVendorDTO() throws Exception {
+        //given
         Vendor vendor = new Vendor();
         vendor.setName(NAME);
 
-        VendorDTO vendorDTO = VendorMapper.INSTANCE.vendorToVendorDTO(vendor);
+        //when
+        VendorDTO vendorDTO = vendorMapper.vendorToVendorDTO(vendor);
 
-        assertThat(vendorDTO.getName(), equalTo(NAME));
+        //then
+        assertEquals(vendor.getName(), vendorDTO.getName());
     }
 
-    public void testVendorDtoToVendor() {
+    @Test
+    public void vendorDTOtoVendor() throws Exception {
+        //given
         VendorDTO vendorDTO = new VendorDTO();
         vendorDTO.setName(NAME);
 
-        Vendor vendor = VendorMapper.INSTANCE.vendorDTOToVendor(vendorDTO);
+        //when
+        Vendor vendor = vendorMapper.vendorDTOtoVendor(vendorDTO);
 
-        assertThat(vendorDTO.getName(), equalTo(NAME));
+        //then
+        assertEquals(vendorDTO.getName(), vendor.getName());
     }
 
 }
